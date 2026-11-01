@@ -1,0 +1,49 @@
+<section class="kit">
+  <header class="indice-cabecera">
+    <h1 class="tablon"><span>El framework</span></h1>
+    <p class="indice-resumen">Los componentes de Telón, para hacer cualquier app. Todos salen de una plantilla en <code>templates/</code>.</p>
+  </header>
+
+  <ui-tarjeta>
+    <ui-titulo>Una app que no es un juego</ui-titulo>
+    <p>La vista de productos del framework de clase, copiada sin cambiar ni una línea, funciona aquí tal cual.</p>
+    <ui-boton id="abrir-productos" class="boton-primario">Abrir productos</ui-boton>
+  </ui-tarjeta>
+
+  <ui-tarjeta>
+    <ui-titulo>Formularios</ui-titulo>
+    <ui-formulario id="kit-formulario">
+      <ui-input id="kit-nombre" label="Nombre" placeholder="Escribe tu nombre"></ui-input>
+      <ui-select id="kit-color" label="Color favorito"><option>Rojo</option><option>Azul</option><option>Verde</option></ui-select>
+      <ui-textarea id="kit-nota" label="Nota" placeholder="Algo que quieras apuntar"></ui-textarea>
+      <ui-checkbox id="kit-aviso" label="Avisarme con una vibración"></ui-checkbox>
+      <ui-interruptor id="kit-interruptor" etiqueta="Interruptor" detalle="Un componente propio de Telón."></ui-interruptor>
+      <ui-grupo>
+        <ui-boton type="submit" class="boton-azul">Probar</ui-boton>
+        <ui-badge id="kit-estado">Sin enviar</ui-badge>
+      </ui-grupo>
+    </ui-formulario>
+  </ui-tarjeta>
+
+  <ui-tarjeta>
+    <ui-titulo>Tablas y listas</ui-titulo>
+    <ui-tabla id="kit-tabla" columnas="Plantilla,Sale de">
+      <ui-fila><ui-celda>ui-boton</ui-celda><ui-celda>boton.html</ui-celda></ui-fila>
+      <ui-fila><ui-celda>ui-tarjeta</ui-celda><ui-celda>tarjeta.html</ui-celda></ui-fila>
+      <ui-fila><ui-cabecera>Total</ui-cabecera><ui-celda>20 plantillas</ui-celda></ui-fila>
+    </ui-tabla>
+    <ui-lista>
+      <ui-item>Cada plantilla se pide una sola vez.</ui-item>
+      <ui-item>Los atributos id, data-* y aria-* pasan al HTML final.</ui-item>
+    </ui-lista>
+  </ui-tarjeta>
+
+  <ui-tarjeta>
+    <ui-titulo>Menú y etiquetas</ui-titulo>
+    <ui-menu aria-label="Ejemplo de menú">
+      <ui-boton class="boton-amarillo" data-color="amarillo">Uno</ui-boton>
+      <ui-boton class="boton-azul" data-color="azul">Dos</ui-boton>
+    </ui-menu>
+    <ui-grupo><ui-badge>Móvil</ui-badge><ui-badge>Sin conexión</ui-badge><ui-badge>Táctil</ui-badge></ui-grupo>
+  </ui-tarjeta>
+</section>

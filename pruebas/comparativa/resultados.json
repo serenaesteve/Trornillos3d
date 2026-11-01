@@ -1,0 +1,47 @@
+{
+ "telon": {
+  "nombre": "Telón",
+  "lineas": 17,
+  "js_kb": 727,
+  "js_gzip_kb": 184,
+  "arranque_ms": 178,
+  "responde_al_toque": true,
+  "errores": []
+ },
+ "three": {
+  "nombre": "Three.js",
+  "lineas": 31,
+  "js_kb": 703,
+  "js_gzip_kb": 175,
+  "arranque_ms": 146,
+  "responde_al_toque": true,
+  "errores": []
+ },
+ "aframe": {
+  "nombre": "A-Frame",
+  "lineas": 15,
+  "js_kb": 1248,
+  "js_gzip_kb": 328,
+  "arranque_ms": 367,
+  "responde_al_toque": true,
+  "errores": []
+ },
+ "babylon": {
+  "nombre": "Babylon.js",
+  "lineas": 21,
+  "js_kb": 6930,
+  "js_gzip_kb": 1483,
+  "arranque_ms": 440,
+  "responde_al_toque": true,
+  "errores": []
+ },
+ "phaser": {
+  "nombre": "Phaser",
+  "lineas": 19,
+  "js_kb": 1168,
+  "js_gzip_kb": 308,
+  "arranque_ms": 266,
+  "responde_al_toque": true,
+  "errores": []
+ }
+}

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A-Frame</title>
+<style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#9bdcf8}canvas{display:block;width:100%;height:100%;touch-action:none}</style>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/aframe@1.7.1/dist/aframe-master.min.js"></script>
+<script>
+window.__toques = 0;
+AFRAME.registerComponent("cambia-color", {
+  init() {
+    this.el.addEventListener("click", () => {
+      this.el.setAttribute("color", window.__toques++ % 2 ? "#f0373d" : "#2c6df2");
+    });
+  },
+});
+</script>
+<a-scene vr-mode-ui="enabled: false" cursor="rayOrigin: mouse" raycaster="objects: .tocable" background="color: #9bdcf8" renderer="alpha: false">
+  <a-box class="tocable" cambia-color position="0 1.6 -5" depth="1.4" height="1.4" width="1.4" color="#f0373d"
+         animation="property: rotation; to: 0 360 0; loop: true; dur: 6000; easing: linear"></a-box>
+</a-scene>
+<script>
+document.querySelector("a-scene").addEventListener("renderstart", () => {
+  requestAnimationFrame(() => { window.__listo = performance.now(); });
+});
+</script>
+</body>
+</html>

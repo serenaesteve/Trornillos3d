@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#8fd6f7">
+  <meta name="description" content="Despiece: puzle 3D de desatornillar para móvil, hecho sobre Telón, un framework móvil propio.">
+  <title>Despiece · hecho con Telón</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="iconos/icono.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="iconos/icono-192.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Despiece">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="preload" href="fuentes/LilitaOne-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="modulepreload" href="vendor/three.core.min.js">
+  <link rel="modulepreload" href="vendor/three.module.min.js">
+  <!-- Con mala cobertura, esto es lo primero que se ve: no depende de ningún otro archivo. -->
+  <style>
+    #arranque { position: fixed; inset: 0; z-index: 50; display: grid; place-content: center; justify-items: center; gap: 14px; background: linear-gradient(180deg, #6cc6f4, #9bdcf8 48%, #d3f1fc); color: #1d4468; font: 800 16px/1.3 system-ui, sans-serif; }
+    #arranque strong { font-size: 44px; color: #fff; text-shadow: 0 3px 0 #1f62c4; letter-spacing: .01em; }
+    #arranque i { width: 44px; height: 44px; border-radius: 50%; background: #46c837; box-shadow: inset 0 -5px 0 #2c9a26; position: relative; animation: arranque 1s linear infinite; }
+    #arranque i::before, #arranque i::after { content: ""; position: absolute; inset: 18px 8px; background: #1f6a1a; border-radius: 2px; }
+    #arranque i::after { inset: 8px 18px; }
+    @keyframes arranque { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) { #arranque i { animation: none; } }
+  </style>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <div id="arranque" role="status"><strong>Despiece</strong><i></i><span>Preparando el taller…</span></div>
+  <main id="contenedor"></main>
+
+  <nav class="navegacion-principal" aria-label="Navegación principal">
+    <button type="button" data-url="inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2.5 11.5a1 1 0 0 0 .7 1.7H5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-6.8h1.8a1 1 0 0 0 .7-1.7z" fill="currentColor"/></svg><span>Inicio</span></button>
+    <button type="button" data-url="laminas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h6a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm10 0h6a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM4 13h6a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1zm10 0h6a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1z" fill="currentColor"/></svg><span>Niveles</span></button>
+    <button type="button" data-url="ajustes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2h-3l-.6 2.6a8 8 0 0 0-1.9.8L5.700 4l-2.100 2.100 1.400 2.300a8 8 0 0 0-.8 1.900L1.600 11v3l2.600.6a8 8 0 0 0 .8 1.900L3.600 18.900 5.700 21l2.300-1.400a8 8 0 0 0 1.900.8l.6 2.600h3l.6-2.600a8 8 0 0 0 1.900-.8l2.300 1.400 2.100-2.100-1.400-2.400a8 8 0 0 0 .8-1.900l2.600-.6v-3l-2.600-.7a8 8 0 0 0-.8-1.900l1.400-2.300L18.300 4 16 5.400a8 8 0 0 0-1.900-.8zM12 8.500a4 4 0 1 1 0 8 4 4 0 0 1 0-8z" fill="currentColor"/></svg><span>Ajustes</span></button>
+    <button type="button" data-url="banco"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7zm0 2.300 6.200 3.500L12 11.300 5.800 7.800zM5 9.500l6 3.400v6.600l-6-3.300zm8 10v-6.600l6-3.400v6.700z" fill="currentColor"/></svg><span>Motor</span></button>
+    <button type="button" data-url="componentes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zm9 0h7v7h-7zM4 13h7v7H4zm12.500 0a3.500 3.500 0 1 1 0 7 3.500 3.500 0 0 1 0-7z" fill="currentColor"/></svg><span>Kit</span></button>
+  </nav>
+
+  <!-- Módulos y scripts diferidos se ejecutan en este orden: primero Three.js, después todo lo demás. -->
+  <script type="module" src="js/tres.js"></script>
+
+  <!-- Motor: genérico, no sabe nada de tornillos. -->
+  <script defer src="js/motor/Recursos.js"></script>
+  <script defer src="js/motor/Geometrias.js"></script>
+  <script defer src="js/motor/Estudio.js"></script>
+  <script defer src="js/motor/Entrada.js"></script>
+  <script defer src="js/motor/Actor.js"></script>
+  <script defer src="js/motor/Particulas.js"></script>
+  <script defer src="js/motor/Camara.js"></script>
+  <script defer src="js/motor/Escena.js"></script>
+  <script defer src="js/motor/Motor.js"></script>
+  <script defer src="js/motor/Sonido.js"></script>
+  <script defer src="js/motor/Inspector.js"></script>
+
+  <!-- Juego: todo lo específico de Despiece vive aquí. -->
+  <script defer src="js/juego/modelos.js"></script>
+  <script defer src="js/juego/reglas.js"></script>
+  <script defer src="js/juego/niveles.js"></script>
+  <script defer src="js/juego/progreso.js"></script>
+  <script defer src="js/juego/tinta.js"></script>
+  <script defer src="js/juego/taller.js"></script>
+
+  <!-- Framework móvil: dispositivo, componentes ui-* y navegación. -->
+  <script defer src="dispositivo.js"></script>
+  <script defer src="componentes.js"></script>
+  <script defer src="controlador.js"></script>
+</body>
+</html>

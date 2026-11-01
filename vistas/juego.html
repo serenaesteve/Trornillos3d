@@ -1,0 +1,38 @@
+<section class="mesa" data-pantalla-completa data-sin-gesto>
+  <header class="mesa-rotulo">
+    <button type="button" class="boton-redondo" id="volver" aria-label="Volver a los niveles">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="mesa-titulo">
+      <span id="titulo-numero" class="mesa-numero"></span>
+      <span id="titulo-modelo" class="mesa-progreso"></span>
+    </div>
+    <button type="button" class="boton-redondo" id="inspeccionar" aria-pressed="false" aria-label="Inspector de escena">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7zm0 2.3 6.2 3.5L12 11.3 5.8 7.8zM5 9.5l6 3.4v6.6l-6-3.3zm8 10v-6.6l6-3.4v6.7z" fill="currentColor"/></svg>
+    </button>
+  </header>
+
+  <div class="cajas" id="cajas" aria-label="Cajas abiertas"></div>
+  <div class="bandeja" id="bandeja" aria-label="Bandeja"></div>
+
+  <div class="mesa-lienzo" id="mesa-lienzo">
+    <canvas id="lienzo" aria-label="Juguete en 3D. Arrastra para girarlo y toca un tornillo para sacarlo." role="img"></canvas>
+    <p class="mesa-nota" id="nota" aria-live="polite"></p>
+    <div class="mano" id="mano" hidden aria-hidden="true">
+      <svg viewBox="0 0 64 64"><path d="M26 6a5 5 0 0 1 5 5v19l3-1.6V24a4.6 4.6 0 0 1 9 0v6l3-.8a4.4 4.4 0 0 1 8 2.4v3l1-.3c3-.8 5 1 5 4v8c0 8-7 15-16 15H34c-5 0-8-2-11-6L9 38c-2-3 1-7 5-5l7 4V11a5 5 0 0 1 5-5z" fill="#ffe3cc" stroke="#7d4a2c" stroke-width="3" stroke-linejoin="round"/></svg>
+    </div>
+  </div>
+
+  <footer class="herramientas">
+    <ui-boton id="pista" class="boton-amarillo">Pista</ui-boton>
+    <ui-boton id="deshacer" class="boton-azul">Deshacer</ui-boton>
+    <ui-boton id="reiniciar" class="boton-azul">Reiniciar</ui-boton>
+  </footer>
+
+  <div class="veredicto" id="veredicto" role="dialog" aria-modal="false" hidden>
+    <h2 id="veredicto-titulo"></h2>
+    <div class="veredicto-sellos" id="veredicto-sellos"></div>
+    <p id="veredicto-detalle"></p>
+    <div class="veredicto-acciones" id="veredicto-acciones"></div>
+  </div>
+</section>

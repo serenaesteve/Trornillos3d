@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Telón</title>
+<style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#9bdcf8}canvas{display:block;width:100%;height:100%;touch-action:none}</style>
+</head>
+<body>
+<canvas id="lienzo"></canvas>
+<script type="module" src="../../js/tres.js"></script>
+<script defer src="../../js/motor/Recursos.js"></script>
+<script defer src="../../js/motor/Geometrias.js"></script>
+<script defer src="../../js/motor/Estudio.js"></script>
+<script defer src="../../js/motor/Entrada.js"></script>
+<script defer src="../../js/motor/Actor.js"></script>
+<script defer src="../../js/motor/Camara.js"></script>
+<script defer src="../../js/motor/Escena.js"></script>
+<script defer src="../../js/motor/Motor.js"></script>
+<script type="module">
+window.__toques = 0;
+const motor = new Motor(document.querySelector("#lienzo"));
+const escena = new Escena();
+motor.cargar(escena);
+escena.camara.encuadrar(2);
+Estudio.montar(motor, escena, { radio: 2 });
+const material = new THREE.MeshStandardMaterial({ color: "#f0373d" });
+const bloque = new Actor({ objeto: new THREE.Mesh(new THREE.BoxGeometry(1.4, 1.4, 1.4), material) });
+bloque.agregarComportamiento((actor, dt) => { actor.objeto.rotation.y += dt; });
+escena.agregar(bloque);
+motor.entrada.al("toque", ({ x, y }) => {
+  if (!escena.lanzarRayo(x, y, [bloque]).length) return;
+  material.color.set(window.__toques++ % 2 ? "#f0373d" : "#2c6df2");
+});
+motor.iniciar();
+requestAnimationFrame(() => requestAnimationFrame(() => { window.__listo = performance.now(); }));
+</script>
+</body>
+</html>

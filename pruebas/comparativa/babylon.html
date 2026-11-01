@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Babylon.js</title>
+<style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#9bdcf8}canvas{display:block;width:100%;height:100%;touch-action:none}</style>
+</head>
+<body>
+<canvas id="lienzo"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/babylonjs@8.20.0/babylon.js"></script>
+<script>
+window.__toques = 0;
+const motor = new BABYLON.Engine(document.querySelector("#lienzo"), true);
+const escena = new BABYLON.Scene(motor);
+escena.clearColor = new BABYLON.Color4(0, 0, 0, 0);
+new BABYLON.ArcRotateCamera("camara", Math.PI / 2, 1.3, 8, BABYLON.Vector3.Zero(), escena);
+new BABYLON.HemisphericLight("luz", new BABYLON.Vector3(0, 1, 0), escena);
+const material = new BABYLON.StandardMaterial("material", escena);
+material.diffuseColor = BABYLON.Color3.FromHexString("#f0373d");
+const bloque = BABYLON.MeshBuilder.CreateBox("bloque", { size: 1.4 }, escena);
+bloque.material = material;
+escena.onPointerObservable.add(info => {
+  if (info.type !== BABYLON.PointerEventTypes.POINTERPICK || info.pickInfo.pickedMesh !== bloque) return;
+  material.diffuseColor = BABYLON.Color3.FromHexString(window.__toques++ % 2 ? "#f0373d" : "#2c6df2");
+});
+motor.runRenderLoop(() => {
+  bloque.rotation.y += motor.getDeltaTime() / 1000;
+  escena.render();
+  window.__listo ??= performance.now();
+});
+addEventListener("resize", () => motor.resize());
+</script>
+</body>
+</html>

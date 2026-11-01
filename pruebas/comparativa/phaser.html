@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Phaser</title>
+<style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#9bdcf8}canvas{display:block;width:100%;height:100%;touch-action:none}</style>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/phaser@3.90.0/dist/phaser.min.js"></script>
+<script>
+window.__toques = 0;
+new Phaser.Game({
+  type: Phaser.AUTO,
+  width: innerWidth,
+  height: innerHeight,
+  transparent: true,
+  scene: {
+    create() {
+      this.bloque = this.add.rectangle(innerWidth / 2, innerHeight / 2, 140, 140, 0xf0373d).setInteractive();
+      this.bloque.on("pointerdown", () => {
+        this.bloque.setFillStyle(window.__toques++ % 2 ? 0xf0373d : 0x2c6df2);
+      });
+    },
+    update(_tiempo, delta) {
+      this.bloque.rotation += delta / 1000;
+      window.__listo ??= performance.now();
+    },
+  },
+});
+</script>
+</body>
+</html>
